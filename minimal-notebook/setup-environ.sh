@@ -65,6 +65,11 @@ if [ x"$KUBERNETES_SERVER" != x":" ]; then
     oc config use-context local
 fi
 
+# Added by Ajay
+echo $OC_VERSION
+which oc 
+oc help
+
 # Now attempt to login to the OpenShift cluster. First check whether we
 # inherited a user access token from shared directory volume initialised
 # from an init container. If not, see if we have been passed in a user
