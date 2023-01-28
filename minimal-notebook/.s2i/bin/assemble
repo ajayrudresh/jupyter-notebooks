@@ -125,3 +125,8 @@ fix-permissions /opt/app-root
 
 # Added by Ajay
 mkdir /opt/app-root/master
+curl -O https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable-4.7/openshift-client-linux-4.7.60.tar.gz /tmp/
+tar -xvf /tmp/openshift-client-linux-4.7.60.tar.gz -C /tmp/
+rm -f /opt/app-root/bin/oc
+cp /tmp/oc /opt/app-root/bin/oc
+chmod +x /opt/app-root/bin/oc
