@@ -52,7 +52,12 @@ if [ x"$KUBERNETES_SERVER" != x":" ]; then
     else
         KUBECTL_CA_ARGS="--insecure-skip-tls-verify"
     fi
-
+    
+    # Added by Ajay
+    echo $OC_VERSION
+    which oc
+    oc help
+    
     oc config set-cluster local $KUBECTL_CA_ARGS --server "https://$KUBERNETES_SERVER" 
 
     CONTEXT_ARGS=
@@ -64,11 +69,6 @@ if [ x"$KUBERNETES_SERVER" != x":" ]; then
     oc config set-context local --cluster local $CONTEXT_ARGS
     oc config use-context local
 fi
-
-# Added by Ajay
-echo $OC_VERSION
-which oc 
-oc help
 
 # Now attempt to login to the OpenShift cluster. First check whether we
 # inherited a user access token from shared directory volume initialised
