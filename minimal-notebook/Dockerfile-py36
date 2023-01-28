@@ -19,13 +19,6 @@ LABEL io.k8s.description="S2I builder for custom Jupyter notebooks." \
       io.openshift.tags="builder,jupyter" \
       io.openshift.s2i.scripts-url="image:///opt/app-root/builder"
 
-# Added by Ajay
-RUN cd /tmp/ && curl -O https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable-4.7/openshift-client-linux-4.7.60.tar.gz && \
-    tar -xvf /tmp/openshift-client-linux-4.7.60.tar.gz
-RUN cp /tmp/oc /opt/app-root/bin/oc && chmod +x /opt/app-root/bin/oc 
-
-chmod +x /opt/app-root/bin/oc
-
 RUN /tmp/scripts/assemble
 
 CMD [ "/opt/app-root/builder/run" ]
